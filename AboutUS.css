@@ -1,0 +1,125 @@
+body {
+  margin: 0;
+  background-color: black;
+  
+}
+
+/* NavBar */
+
+.logo {
+  width: 100px;
+  height: 100%;
+  margin-left: 50px;
+}
+
+.ReadFiy {
+  color: #cc9600;
+  margin: 30px 20px 0px 20px;
+  font-size: 25px;
+}
+
+.NavBar {
+  display: flex;
+  background-image: url(imgS/backIMG.png);
+}
+
+.ul {
+  display: flex;
+  margin-left: 300px;
+}
+
+.list {
+  margin: 35px 20px 0px 40px;
+  list-style: none;
+}
+
+.Anchor {
+  text-decoration: none;
+  color: white;
+}
+
+.icon {
+  margin: 8px 20px 0px 50px;
+}
+
+.imgPerson {
+  margin: 30px 20px 0px 55px;
+}
+
+.user {
+  color: white;
+  font-size: 8px;
+  margin: 0px 20px 0px 40px;
+}
+
+/* AboutUS */
+
+.imgbody {
+  width: 100%;
+  height: 100%;
+}
+.About {
+  color: #cc9600;
+  font-size: 30px;
+  margin-left: 80px;
+}
+.BookPoint {
+  color: white;
+  margin: 50px 100px 100px 80px;
+  line-height: 1.5;
+}
+
+.branch-title {
+  color: #fcee59;
+}
+.addres {
+  color: #d6ce80;
+}
+
+.color {
+  color: white;
+}
+
+.Commitment {
+  color: #cc9600;
+  font-size: 30px;
+  margin-left: 42%;
+}
+
+.providing {
+  color: white;
+  line-height: 1.5;
+  margin: 20px 80px 100px 80px;
+  font-family: serif;
+}
+
+.Neth {
+  margin-left: 80px;
+}
+
+.hr {
+  border: 1px solid white;
+  margin: 0px 100px 0px 100px;
+}
+
+.add {
+  color: white;
+  margin-top: 35px;
+  font-size: 10px;
+}
+
+.Visit {
+  color: #cc9600;
+  margin-top: 32px;
+  font-size: 12px;
+  text-align: center;
+  margin-left: 77px;
+}
+
+.Facebook {
+  margin: 20px 0px 0px 140px;
+}
+
+.Linkedin {
+  margin: 20px 0px 0px 0px;
+}

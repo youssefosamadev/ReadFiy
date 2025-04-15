@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReadFiy</title>
+    <link rel="stylesheet" href="Shop.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- NavBar -->
+    <div class="NavBar">
+      <img class="logo" src="imgS/Rectangle 3.svg" alt="" />
+      <strong class="ReadFiy">ReadFiy</strong>
+      <div class="nav">
+        <ul class="ul">
+          <li class="list"><a class="Anchor" href="#">Home</a></li>
+          <li class="list"><a class="Anchor" href="AboutUS.Html">About</a></li>
+          <li class="list">
+            <a class="Anchor" href="Thunmanhandiya.html">Thunmanhandiya</a>
+          </li>
+          <li class="list"><a class="Anchor" href="Shop.html">Shop</a></li>
+          <li class="list">
+            <a class="Anchor" href="Discounts.html">Discounts</a>
+          </li>
+        </ul>
+      </div>
+      <img class="icon" src="imgS/Icon.svg" alt="" />
+      <a href="Login1.html"
+        ><div class="user-section">
+          <img class="imgPerson" src="imgS/Rectangle 4.svg" alt="User Image" />
+          <br />
+          <p class="user">UserEmail@gmail.com</p>
+        </div></a
+      >
+    </div>
+    <!-- Cart Icon -->
+    <div class="container text-center mt-5">
+      <h2 class="mb-4 text-warning fw-bold">Explore All Books Here</h2>
+
+      <div class="mb-4">
+        <label class="me-3"
+          ><input type="checkbox" class="filter" value="all" checked />
+          All</label
+        >
+        <label class="me-3"
+          ><input type="checkbox" class="filter" value="novel" /> Novel</label
+        >
+        <label class="me-3"
+          ><input type="checkbox" class="filter" value="translations" />
+          Translations</label
+        >
+        <label class="me-3"
+          ><input type="checkbox" class="filter" value="kids" /> Kids’
+          Stories</label
+        >
+      </div>
+
+      <div class="row" id="bookList">
+        <!-- Books will be inserted dynamically -->
+      </div>
+    </div>
+    <div class="container-fluid cnot">
+      <img class="Neth" src="imgS/Rectangle 24.svg" alt="" />
+      <hr class="hr" />
+      <div class="row">
+        <div class="col-md-2">
+          <p class="add">© 2024 | Neth BookPoint</p>
+        </div>
+        <div class="col-md-7">
+          <p class="Visit">
+            Visit our branches in Galle, Kurunegala, Kandy, and Colombo, and
+            register for our online platform to enjoy maximum benefits!t
+          </p>
+        </div>
+        <div class="col-md-3">
+          <img class="Facebook" src="imgS/Facebook.svg" alt="" />
+          <img class="Linkedin" src="imgS/Linkedin.svg" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Icon -->
+
+    <a href="Cart.html">
+      <div class="cart-icon" id="cartIcon" data-count="0">🛒</div>
+    </a>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const books = [
+        {
+          title: "Thunmanhandiya",
+          author: "Mahagama Sekara",
+          price: 700,
+          type: "novel",
+          img: "imgS/Thunmanhandiya.png",
+        },
+        {
+          title: "Manikkawatha",
+          author: "Mahinda Prasad",
+          price: 900,
+          type: "novel",
+          img: "imgS/Manikkawatha.png",
+        },
+        {
+          title: "Manjula Wediwardena",
+          author: "Manjula Wediwardena",
+          price: 990,
+          type: "translations",
+          img: "imgS/Wediwardena.png",
+        },
+        {
+          title: "The Book Thief",
+          author: "Markus Zusak",
+          price: 1120,
+          type: "translations",
+          img: "imgS/Rectangle 18.png",
+        },
+        {
+          title: "The Pigeon Needs a Bath",
+          author: "Mo Williams",
+          price: 450,
+          type: "kids",
+          img: "imgS/Rectangle 15.png",
+        },
+        {
+          title: "Miss Nelson is Missing",
+          author: "Harry Allard",
+          price: 500,
+          type: "kids",
+          img: "imgS/Miss Nelson is Missing.jpeg",
+        },
+      ];
+
+      let cartCount = 0;
+
+      function renderBooks(filterTypes) {
+        const bookList = document.getElementById("bookList");
+        bookList.innerHTML = "";
+
+        let filteredBooks = books.filter((book) => {
+          return filterTypes.includes("all") || filterTypes.includes(book.type);
+        });
+
+        filteredBooks.forEach((book) => {
+          const col = document.createElement("div");
+          col.className = "col-md-3";
+          col.innerHTML = `
+      <div class="book-card">
+        <img src="${book.img}" class="img-fluid mb-2" alt="${book.title}" />
+        <h6>${book.title}</h6>
+        <p class="text-muted">${book.author}</p>
+        <p>Rs. ${book.price}/-</p>
+        <button class="btn btn-outline-warning w-100 add-to-cart">
+          🛒 Add to Cart
+        </button>
+      </div>
+    `;
+          bookList.appendChild(col);
+        });
+
+        document.querySelectorAll(".add-to-cart").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            cartCount++;
+            document
+              .getElementById("cartIcon")
+              .setAttribute("data-count", cartCount);
+          });
+        });
+      }
+
+      // Checkbox filter
+      document.querySelectorAll(".filter").forEach((cb) => {
+        cb.addEventListener("change", () => {
+          const selected = Array.from(
+            document.querySelectorAll(".filter:checked")
+          ).map((cb) => cb.value);
+          renderBooks(selected.length ? selected : ["all"]);
+        });
+      });
+
+      // Initial render
+      renderBooks(["all"]);
+    </script>
+  </body>
+</html>

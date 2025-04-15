@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <link rel="stylesheet" href="Cart.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReadFiy</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="NavBar">
+      <img class="logo" src="imgS/Rectangle 3.svg" alt="Logo" />
+      <strong class="ReadFiy">ReadFiy</strong>
+      <div class="nav">
+        <ul class="ul">
+          <li class="list"><a class="Anchor" href="HomePage.html">Home</a></li>
+          <li class="list"><a class="Anchor" href="AboutUS.Html">About</a></li>
+          <li class="list">
+            <a class="Anchor" href="Thunmanhandiya.html">Thunmanhandiya</a>
+          </li>
+          <li class="list"><a class="Anchor" href="Shop.html">Shop</a></li>
+          <li class="list"><a class="Anchor" href="Discounts.html">Discounts</a></li>
+        </ul>
+      </div>
+      <img class="icon" src="imgS/Icon.svg" alt="Search Icon" />
+      <a href="Login1.html"
+        ><div class="user-section">
+          <img class="imgPerson" src="imgS/Rectangle 4.svg" alt="User Image" />
+          <br />
+          <p class="user">UserEmail@gmail.com</p>
+        </div></a
+      >
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <aside class="sidebar">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Special offers</h5>
+                <p class="card-text">
+                  Enjoy Special Discounts With
+                  <img
+                    class="Master"
+                    src="imgS/Strawberry_Mastercard_in_a_jeans_pocket_1_1.webp"
+                    alt="Mastercard"
+                  />
+                  <img class="Master" src="imgS/Mastercard.jpg" alt="Visa" />
+                </p>
+                <p class="card-text">
+                  Available At: <br />
+                  KCC Book Fair <br />
+                  BMICH Book Fair
+                </p>
+                <img
+                  src="imgS/people-visiting-book-fair-illustration_1284-59150.avif"
+                  alt="Book Fair Illustration"
+                  class="img-fluid"
+                />
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="col-md-9">
+          <main class="cart-section">
+            <h2>Your Cart Details</h2>
+            <div id="cart-items-container"></div>
+            <div class="total-price">
+              Total Price: EGP. <span id="total-price">0.00</span>
+            </div>
+            <a href="cheakout.html"
+              ><button class="btn btn-primary checkout-btn">
+                Proceed to Checkout
+              </button></a
+            >
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© 2024 Neth BookPoint</p>
+        <div>
+          <a href="#">Visit our branches in Galle</a>
+          <a href="#">Kurunegala</a>
+          <a href="#">Kandy</a>
+          <a href="#">Colombo</a>
+          <a href="#"
+            >and register for our online platform to enjoy maximum benefits!</a
+          >
+        </div>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const cartItems = [
+        {
+          id: 1,
+          name: "Manikkawatha",
+          author: "Mahinda Prasad Masimbula",
+          price: 900.0,
+          quantity: 0,
+          image: "imgS/159.jpg",
+        },
+        {
+          id: 2,
+          name: "Math Book",
+          author: "John Doe",
+          price: 750.0,
+          quantity: 0,
+          image: "imgS/11399814.jpg",
+        },
+      ];
+
+      function displayCartItems() {
+        const cartItemsContainer = document.getElementById(
+          "cart-items-container"
+        );
+        cartItemsContainer.innerHTML = "";
+
+        let totalPrice = 0;
+        cartItems.forEach((item) => {
+          const itemPrice = item.price * item.quantity;
+          totalPrice += itemPrice;
+
+          const cartItemElement = document.createElement("div");
+          cartItemElement.classList.add("cart-item");
+          cartItemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-details">
+                        <h5>${item.name}</h5>
+                        <p>By ${item.author}</p>
+                        <p>EGP. ${item.price.toFixed(2)}</p>
+                        <div class="cart-item-quantity">
+                            <button class="btn btn-sm btn-secondary" onclick="decreaseQuantity(${
+                              item.id
+                            })">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="btn btn-sm btn-secondary" onclick="increaseQuantity(${
+                              item.id
+                            })">+</button>
+                        </div>
+                    </div>
+                `;
+          cartItemsContainer.appendChild(cartItemElement);
+        });
+
+        document.getElementById("total-price").textContent =
+          totalPrice.toFixed(2);
+      }
+
+      function increaseQuantity(itemId) {
+        const item = cartItems.find((item) => item.id === itemId);
+        if (item) {
+          item.quantity += 1;
+          displayCartItems();
+        }
+      }
+
+      function decreaseQuantity(itemId) {
+        const item = cartItems.find((item) => item.id === itemId);
+        if (item && item.quantity > 0) {
+          item.quantity -= 1;
+          displayCartItems();
+        }
+      }
+
+      displayCartItems();
+    </script>
+  </body>
+</html>
