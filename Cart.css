@@ -1,0 +1,149 @@
+body {
+  font-family: "Inter", sans-serif;
+}
+.logo {
+  width: 100px;
+  height: 100%;
+  margin-left: 50px;
+}
+
+.ReadFiy {
+  color: #cc9600;
+  margin: 30px 20px 0px 20px;
+  font-size: 25px;
+}
+
+.NavBar {
+  display: flex;
+  background-image: url(imgS/backIMG.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.ul {
+  display: flex;
+  margin-left: 300px;
+}
+
+.list {
+  margin: 35px 20px 0px 40px;
+  list-style: none;
+}
+
+.Anchor {
+  text-decoration: none;
+  color: white;
+}
+
+.icon {
+  margin: 8px 20px 0px 50px;
+}
+
+.imgPerson {
+  margin: 30px 20px 0px 55px;
+}
+
+.user {
+  color: white;
+  font-size: 8px;
+  margin: 0px 20px 0px 40px;
+}
+.card-body {
+  background-color: black;
+}
+.card-text {
+  color: rgb(191, 185, 185);
+  margin-bottom: 20px;
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+.cart-item img {
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 8px; /* Add a small border radius for rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+  transition: transform 0.3s ease; /* Add a smooth transition for hover effect */
+}
+
+.cart-item img:hover {
+  transform: scale(1.05); /* Enlarge the image slightly on hover */
+}
+.cart-item-details {
+  flex: 1;
+}
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+}
+.cart-item-quantity button {
+  margin: 0 5px;
+}
+.total-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.checkout-btn {
+  margin-top: 20px;
+}
+.Master {
+  width: 100%;
+  max-width: 250px;
+  height: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.Master:hover {
+  transform: scale(1.03);
+}
+
+.footer {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+.footer a:hover {
+  color: #ddd;
+}
+.social-icons {
+  margin-top: 10px;
+}
+.social-icons a {
+  color: #fff;
+  margin: 0 5px;
+  font-size: 1.2rem;
+}
+.social-icons a:hover {
+  color: #ddd;
+}
+
+.sidebar img {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  border-radius: 8px; /* Add border radius to sidebar images */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.sidebar img:hover {
+  transform: scale(1.03);
+}
+
+.sidebar .card-title {
+  color: rgb(191, 185, 185);
+}

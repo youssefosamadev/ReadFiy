@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;
+  color: #cc9600;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  width: 900px;
+  height: 550px;
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-section {
+  width: 45%;
+  height: 100%;
+  background: url("imgS/صورة\ الولد.png") no-repeat center center;
+  background-size: cover;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.login-section {
+  padding: 50px;
+  width: 55%;
+  margin-left: auto;
+  background: #111;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+p {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  padding-left: 15px;
+  margin: 10px 0;
+  background: #000;
+  color: #cc9600;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.placeholder {
+  background-color: #d6ce80;
+}
+.forgot-password {
+  text-align: right;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.login-btn,
+.google-login {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: #cc9600;
+  color: #000;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 12px;
+  color: white;
+}
+
+.google-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #000;
+}
+
+.google-login img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.separator {
+  border-top: 1px solid #a59f9f;
+}
+
+.create-account {
+  color: #cc9600;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 99px;
+}
+
+.account {
+  margin-top: 15px;
+}
+
+.Login {
+  text-align: center;
+  margin-bottom: 10px;
+}

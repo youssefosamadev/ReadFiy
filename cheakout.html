@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="cheakout.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>ReadFiy</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <form id="checkoutForm">
+        <h2 class="Checkout">Checkout Details</h2>
+        <div>
+          <input
+            class="input placeholder"
+            type="text"
+            placeholder="Receiver name"
+            required
+          />
+          <input
+            class="input placeholder"
+            type="text"
+            placeholder="Billing Address"
+            required
+          />
+        </div>
+        <div>
+          <input
+            class="input placeholder"
+            type="text"
+            placeholder="Sending Address"
+            required
+          />
+          <input
+            class="input placeholder"
+            type="text"
+            placeholder="Select Province"
+            required
+          />
+        </div>
+        <div>
+          <input
+            class="input placeholder"
+            type="text"
+            placeholder="Contact Number"
+            required
+          />
+          <input
+            class="input placeholder"
+            type="text"
+            placeholder="Card Number"
+            required
+          />
+        </div>
+        <div class="bnt">
+          <button class="btnPAY" type="button" onclick="handlePayment()">
+            Pay Now
+          </button>
+          <button
+            class="bntClose"
+            type="button"
+            onclick="window.location.href='Cart.html'"
+          >
+            Close Checkout Page
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function handlePayment() {
+        alert("✅ تم الشراء بنجاح! شكرًا لتعاملك معنا 💳");
+        setTimeout(function () {
+          window.location.href = "HomePage.html";
+        }, 1500);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Neth BookPoint</title>
+    <link rel="stylesheet" href="./login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="image-section"></div>
+      <div class="login-section">
+        <h1>Welcome to Neth BookPoint!</h1>
+        <p class="account">
+          Discover a seamless way to sell your books and unlock exclusive
+          benefits. Enjoy a hassle-free experience, save valuable time, and take
+          advantage of our amazing offers.
+        </p>
+        <h2 class="Login">Login to Your Account!</h2>
+        <form id="loginForm">
+          <input
+            class="placeholder"
+            type="email"
+            id="email"
+            placeholder="Enter Email"
+            autofocus
+          />
+          <input
+            class="placeholder"
+            type="password"
+            id="password"
+            placeholder="Enter Password"
+          />
+          <div class="forgot-password">
+            <a href="./forgetpassword.html" style="color: #d6ce80"
+              >Forgot Password?</a
+            >
+          </div>
+          <!-- زر التسجيل بدون رابط -->
+          <button type="submit" class="login-btn">LOGIN</button>
+        </form>
+        <p class="account">
+          Don't have an account?
+          <a href="./create account2.html" class="create-account"
+            >Create an Account</a
+          >
+        </p>
+        <div class="separator"></div>
+        <button class="google-login" onclick="loginWithGoogle()">
+          <img src="imgS/google-icon.svg" alt="Google" /> Login with Google
+        </button>
+      </div>
+    </div>
+    <script src="./login.js"></script>
+  </body>
+</html>

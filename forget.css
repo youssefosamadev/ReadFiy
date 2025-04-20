@@ -1,0 +1,75 @@
+/* تنسيق عام للصفحة */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000; /* نفس لون الخلفية في صفحة login */
+  font-family: Arial, sans-serif;
+  color: #cc9600; /* لون النص الأساسي */
+}
+
+/* صندوق النموذج */
+.form-container {
+  width: 450px;
+  padding: 30px;
+  background: #111; /* نفس لون الخلفية الداخلية */
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* تحسين شكل العنوان */
+h2 {
+  color: #cc9600;
+  text-shadow: 2px 2px 8px rgba(204, 150, 0, 0.6);
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* تنسيق الحقول */
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px -10px;
+  background: #000; /* نفس لون الحقول في login */
+  color: #cc9600; /* لون الخط */
+  border: 1px solid #cc9600; /* إطار ذهبي */
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* تأثير عند التركيز على الحقول */
+input:focus {
+  border-color: #d6ce80;
+  box-shadow: 0 0 8px rgba(214, 206, 128, 0.6);
+  outline: none;
+}
+
+/* زر تغيير كلمة المرور */
+button {
+  width: 100%;
+  padding: 14px;
+  background-color: #cc9600; /* لون الزر مطابق لزر تسجيل الدخول */
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* تأثير عند التمرير */
+button:hover {
+  background-color: #d6ce80;
+  box-shadow: 0 5px 15px rgba(214, 206, 128, 0.6);
+  transform: scale(1.05);
+}
+
+/* تأثير عند الضغط */
+button:active {
+  background-color: green;
+  transform: scale(1.1);
+  box-shadow: 0 5px 20px rgba(204, 85, 0, 0.6);
+}

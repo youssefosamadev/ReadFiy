@@ -1,0 +1,44 @@
+body {
+  max-width: 50%;
+  height: 100%;
+  margin-left: 25%;
+}
+.Checkout {
+  color: #f29c0d;
+}
+.input {
+  padding: 12px 25px 12px 25px;
+  margin: 15px;
+  color: #434244;
+  border-radius: 5px;
+  border: none;
+}
+
+.placeholder {
+  background-color: #f3f3f3cf;
+}
+.wrapper {
+  text-align: center;
+  padding: 150px 32px;
+  background-color: black;
+  border-radius: 15px;
+}
+.btnPAY {
+  padding: 10px 77px 10px 77px;
+  background-color: #cc9600;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+}
+
+.bntClose {
+  padding: 10px 40px 10px 40px;
+  background-color: black;
+  color: #cc9600;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  border: 1px solid #cc9600;
+  margin-left: 28px;
+}
