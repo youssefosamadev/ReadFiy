@@ -17,6 +17,6 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
   } else {
     alert("تم تسجيل الدخول بنجاح");
     // ✅ التوجيه إلى صفحة الهوم
-    window.location.href = "HomePage.html";
+    window.location.href = "index.html";
   }
 });

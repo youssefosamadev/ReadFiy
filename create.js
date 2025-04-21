@@ -12,6 +12,6 @@ document.getElementById("registerForm").addEventListener("submit", function (eve
     alert("Please complete the required fields.");
   } else {
     alert("Account created successfully!");
-    window.location.href = "HomePage.html"; // Redirect after success
+    window.location.href = "index.html"; // Redirect after success
   }
 });
