@@ -14,6 +14,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
   </head>
+
   <body>
     <!-- NavBar -->
     <div class="NavBar">
@@ -27,7 +28,9 @@
             <a class="Anchor" href="Thunmanhandiya.html">Thunmanhandiya</a>
           </li>
           <li class="list"><a class="Anchor" href="Shop.html">Shop</a></li>
-          <li class="list"><a class="Anchor" href="Discounts.html">Discounts</a></li>
+          <li class="list">
+            <a class="Anchor" href="Discounts.html">Discounts</a>
+          </li>
         </ul>
       </div>
       <img class="icon" src="imgS/Icon.svg" alt="" />
@@ -120,11 +123,22 @@
 
       let cartCount = 0;
 
+      function addToCart(book) {
+        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        cartItems.push({
+          title: book.title,
+          author: book.author,
+          price: book.salePrice,
+          img: book.img,
+        });
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      }
+
       function renderBooks() {
         const bookList = document.getElementById("bookList");
         bookList.innerHTML = "";
 
-        books.forEach((book) => {
+        books.forEach((book, index) => {
           const discount = Math.round(
             ((book.originalPrice - book.salePrice) / book.originalPrice) * 100
           );
@@ -139,8 +153,8 @@
                 <h5 class="card-title">${book.title}</h5>
                 <p class="card-text text-muted">${book.author}</p>
                 <p>
-                  <del class="text-danger">Rs. ${book.originalPrice}/-</del>
-                  <span class="text-success fw-bold ms-2">Rs. ${book.salePrice}/-</span>
+                  <del class="text-danger">EGP ${book.originalPrice}</del>
+                  <span class="text-success fw-bold ms-2"> EGP ${book.salePrice}</span>
                   <span class="badge bg-danger ms-2">${discount}% OFF</span>
                 </p>
                 <button class="btn btn-warning w-100 add-to-cart">Add to Cart</button>
@@ -150,8 +164,9 @@
           bookList.appendChild(col);
         });
 
-        document.querySelectorAll(".add-to-cart").forEach((btn) => {
+        document.querySelectorAll(".add-to-cart").forEach((btn, index) => {
           btn.addEventListener("click", () => {
+            addToCart(books[index]);
             cartCount++;
             document
               .getElementById("cartIcon")

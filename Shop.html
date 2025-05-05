@@ -43,33 +43,41 @@
         </div></a
       >
     </div>
+
     <!-- Cart Icon -->
+    <a href="Cart.html">
+      <div class="cart-icon" id="cartIcon" data-count="0">🛒</div>
+    </a>
+
+    <!-- Book List -->
     <div class="container text-center mt-5">
       <h2 class="mb-4 text-warning fw-bold">Explore All Books Here</h2>
 
       <div class="mb-4">
-        <label class="me-3"
-          ><input type="checkbox" class="filter" value="all" checked />
-          All</label
-        >
-        <label class="me-3"
-          ><input type="checkbox" class="filter" value="novel" /> Novel</label
-        >
-        <label class="me-3"
-          ><input type="checkbox" class="filter" value="translations" />
-          Translations</label
-        >
-        <label class="me-3"
-          ><input type="checkbox" class="filter" value="kids" /> Kids’
-          Stories</label
-        >
+        <label class="me-3">
+          <input type="checkbox" class="filter" value="all" checked />
+          All
+        </label>
+        <label class="me-3">
+          <input type="checkbox" class="filter" value="novel" /> Novel
+        </label>
+        <label class="me-3">
+          <input type="checkbox" class="filter" value="translations" />
+          Translations
+        </label>
+        <label class="me-3">
+          <input type="checkbox" class="filter" value="kids" />
+          Kids’ Stories
+        </label>
       </div>
 
       <div class="row" id="bookList">
         <!-- Books will be inserted dynamically -->
       </div>
     </div>
-    <div class="container-fluid cnot">
+
+    <!-- Footer -->
+    <div class="container-fluid cnot mt-5">
       <img class="Neth" src="imgS/Rectangle 24.svg" alt="" />
       <hr class="hr" />
       <div class="row">
@@ -79,7 +87,7 @@
         <div class="col-md-7">
           <p class="Visit">
             Visit our branches in Galle, Kurunegala, Kandy, and Colombo, and
-            register for our online platform to enjoy maximum benefits!t
+            register for our online platform to enjoy maximum benefits!
           </p>
         </div>
         <div class="col-md-3">
@@ -89,16 +97,13 @@
       </div>
     </div>
 
-    <!-- Cart Icon -->
-
-    <a href="Cart.html">
-      <div class="cart-icon" id="cartIcon" data-count="0">🛒</div>
-    </a>
+    <!-- Scripts -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+
     <script>
       const books = [
         {
@@ -157,27 +162,31 @@
 
         filteredBooks.forEach((book) => {
           const col = document.createElement("div");
-          col.className = "col-md-3";
+          col.className = "col-md-3 mb-4";
           col.innerHTML = `
-      <div class="book-card">
-        <img src="${book.img}" class="img-fluid mb-2" alt="${book.title}" />
-        <h6>${book.title}</h6>
-        <p class="text-muted">${book.author}</p>
-        <p>Rs. ${book.price}/-</p>
-        <button class="btn btn-outline-warning w-100 add-to-cart">
-          🛒 Add to Cart
-        </button>
-      </div>
-    `;
+            <div class="book-card">
+              <img src="${book.img}" class="img-fluid mb-2" alt="${book.title}" />
+              <h6>${book.title}</h6>
+              <p class="text-muted">${book.author}</p>
+              <p>EGP. ${book.price}/-</p>
+              <button class="btn btn-outline-warning w-100 add-to-cart">
+                🛒 Add to Cart
+              </button>
+            </div>
+          `;
           bookList.appendChild(col);
-        });
 
-        document.querySelectorAll(".add-to-cart").forEach((btn) => {
-          btn.addEventListener("click", () => {
+          const addButton = col.querySelector(".add-to-cart");
+          addButton.addEventListener("click", () => {
             cartCount++;
             document
               .getElementById("cartIcon")
               .setAttribute("data-count", cartCount);
+
+            // حفظ الكتاب في localStorage
+            let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+            cartItems.push(book);
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
           });
         });
       }

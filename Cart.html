@@ -35,7 +35,9 @@
             <a class="Anchor" href="Thunmanhandiya.html">Thunmanhandiya</a>
           </li>
           <li class="list"><a class="Anchor" href="Shop.html">Shop</a></li>
-          <li class="list"><a class="Anchor" href="Discounts.html">Discounts</a></li>
+          <li class="list">
+            <a class="Anchor" href="Discounts.html">Discounts</a>
+          </li>
         </ul>
       </div>
       <img class="icon" src="imgS/Icon.svg" alt="Search Icon" />
@@ -47,6 +49,7 @@
         </div></a
       >
     </div>
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-3">
@@ -83,13 +86,13 @@
             <h2>Your Cart Details</h2>
             <div id="cart-items-container"></div>
             <div class="total-price">
-              Total Price: EGP. <span id="total-price">0.00</span>
+              Total Price: Rs. <span id="total-price">0.00</span>
             </div>
-            <a href="cheakout.html"
-              ><button class="btn btn-primary checkout-btn">
+            <a href="cheakout.html">
+              <button class="btn btn-primary checkout-btn">
                 Proceed to Checkout
-              </button></a
-            >
+              </button>
+            </a>
           </main>
         </div>
       </div>
@@ -115,24 +118,27 @@
     </footer>
 
     <script>
-      const cartItems = [
-        {
-          id: 1,
-          name: "Manikkawatha",
-          author: "Mahinda Prasad Masimbula",
-          price: 900.0,
-          quantity: 0,
-          image: "imgS/159.jpg",
-        },
-        {
-          id: 2,
-          name: "Math Book",
-          author: "John Doe",
-          price: 750.0,
-          quantity: 0,
-          image: "imgS/11399814.jpg",
-        },
-      ];
+      let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+      // ترتيب الكتب مع حساب الكمية
+      let cartMap = {};
+
+      cartItems.forEach((item) => {
+        let key = item.title;
+        if (cartMap[key]) {
+          cartMap[key].quantity += 1;
+        } else {
+          cartMap[key] = {
+            title: item.title,
+            author: item.author,
+            price: item.price,
+            img: item.img,
+            quantity: 1,
+          };
+        }
+      });
+
+      cartItems = Object.values(cartMap);
 
       function displayCartItems() {
         const cartItemsContainer = document.getElementById(
@@ -141,29 +147,31 @@
         cartItemsContainer.innerHTML = "";
 
         let totalPrice = 0;
-        cartItems.forEach((item) => {
+
+        cartItems.forEach((item, index) => {
           const itemPrice = item.price * item.quantity;
           totalPrice += itemPrice;
 
           const cartItemElement = document.createElement("div");
-          cartItemElement.classList.add("cart-item");
+          cartItemElement.classList.add(
+            "cart-item",
+            "d-flex",
+            "align-items-center",
+            "mb-3"
+          );
           cartItemElement.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}">
-                    <div class="cart-item-details">
-                        <h5>${item.name}</h5>
-                        <p>By ${item.author}</p>
-                        <p>EGP. ${item.price.toFixed(2)}</p>
-                        <div class="cart-item-quantity">
-                            <button class="btn btn-sm btn-secondary" onclick="decreaseQuantity(${
-                              item.id
-                            })">-</button>
-                            <span>${item.quantity}</span>
-                            <button class="btn btn-sm btn-secondary" onclick="increaseQuantity(${
-                              item.id
-                            })">+</button>
-                        </div>
-                    </div>
-                `;
+            <img src="${item.img}" alt="${item.title}" style="width: 100px; height: 100px; object-fit: cover; margin-right: 15px;">
+            <div>
+              <h5>${item.title}</h5>
+              <p>By ${item.author}</p>
+              <p>Rs. ${item.price}/-</p>
+              <div class="cart-item-quantity">
+                <button class="btn btn-sm btn-secondary" onclick="decreaseQuantity(${index})">-</button>
+                <span class="mx-2">${item.quantity}</span>
+                <button class="btn btn-sm btn-secondary" onclick="increaseQuantity(${index})">+</button>
+              </div>
+            </div>
+          `;
           cartItemsContainer.appendChild(cartItemElement);
         });
 
@@ -171,20 +179,35 @@
           totalPrice.toFixed(2);
       }
 
-      function increaseQuantity(itemId) {
-        const item = cartItems.find((item) => item.id === itemId);
-        if (item) {
-          item.quantity += 1;
-          displayCartItems();
-        }
+      function increaseQuantity(index) {
+        cartItems[index].quantity += 1;
+        updateLocalStorage();
+        displayCartItems();
       }
 
-      function decreaseQuantity(itemId) {
-        const item = cartItems.find((item) => item.id === itemId);
-        if (item && item.quantity > 0) {
-          item.quantity -= 1;
-          displayCartItems();
+      function decreaseQuantity(index) {
+        if (cartItems[index].quantity > 1) {
+          cartItems[index].quantity -= 1;
+        } else {
+          cartItems.splice(index, 1);
         }
+        updateLocalStorage();
+        displayCartItems();
+      }
+
+      function updateLocalStorage() {
+        let updatedCart = [];
+        cartItems.forEach((item) => {
+          for (let i = 0; i < item.quantity; i++) {
+            updatedCart.push({
+              title: item.title,
+              author: item.author,
+              price: item.price,
+              img: item.img,
+            });
+          }
+        });
+        localStorage.setItem("cartItems", JSON.stringify(updatedCart));
       }
 
       displayCartItems();
